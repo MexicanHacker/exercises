@@ -51,14 +51,12 @@ function displayEntries()
 function printRecord()
 {
    entry=$1
-   name=`echo $entry | cut -d : -f 1`
-   email=`echo $entry | cut -d : -f 2`
-   direccion=`echo $entry | cut -d : -f 3`
-   num_tel=`echo $entry | cut -d : -f 4`
-   echo "Nombre: $name"
-   echo "Email: $email"
-   echo "Direccion: $direccion"
-   echo "Teléfono: $num_tel"
+   echo $entry | awk -F ':' '{
+        print "Nombre: " $1;
+        print "Email: " $2;
+        print "Direccion: " $3;
+        print "Telefono: " $4;
+   }'
    echo ""
 }
 
